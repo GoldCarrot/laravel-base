@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use GoldcarrotLaravel\Base\Validators\BaseValidator;
+
+class {{ class }} extends BaseValidator
+{
+    protected function createRules(): array
+    {
+        return [
+            //TODO Implement creating rules
+        ];
+    }
+}

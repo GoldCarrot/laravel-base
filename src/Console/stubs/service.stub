@@ -1,0 +1,41 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use GoldcarrotLaravel\Base\Repositories\BaseRepository;
+
+class {{ class }}
+{
+    public function create(array $data): ?{{ model }}
+    {
+        // TODO {{ model }} create method
+    }
+
+    public function update({{ model }} ${{ modelVariable }}, array $data): ?{{ model }}
+    {
+        // TODO {{ model }} create method
+    }
+
+    public function activate({{ model }} ${{ modelVariable }}): bool
+    {
+        // TODO {{ model }} create method
+    }
+
+    public function archive({{ model }} ${{ modelVariable }}): bool
+    {
+        // TODO {{ model }} create method
+    }
+
+    public function ban({{ model }} ${{ modelVariable }}): bool
+    {
+        // TODO {{ model }} create method
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }}): bool
+    {
+        // TODO {{ model }} create method
+    }
+}
+
+

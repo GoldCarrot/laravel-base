@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use GoldcarrotLaravel\Base\Enums\BaseEnums;
+
+class {{ class }} extends BaseEnums
+{
+   public static function keys(): array
+   {
+       return [
+
+       ];
+   }
+}

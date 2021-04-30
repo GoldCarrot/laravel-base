@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use GoldcarrotLaravel\Base\Presenters\BasePresenter;
+
+/**
+ * Class {{ class }}
+ * @package {{ namespace }}
+ * @property {{model}} $model
+ */
+class {{ class }} extends BasePresenter
+{
+    public function toArray(): array
+    {
+          return [
+              'id' => $this->model->id,
+          ];
+    }
+}

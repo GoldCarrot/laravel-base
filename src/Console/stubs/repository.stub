@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use GoldcarrotLaravel\Base\Repositories\BaseRepository;
+
+class {{ class }} extends BaseRepository
+{
+    protected string $class = {{ model }}::class;
+}

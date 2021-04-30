@@ -1,0 +1,14 @@
+{
+  "name": "goldcarrot/laravel-base",
+  "description": "Laravel base help classes",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Goldcarrot\\": "src/"
+    }
+  }
+}
