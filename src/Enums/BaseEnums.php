@@ -1,9 +1,9 @@
 <?php
 
-namespace Goldcarrot\Base\Enums;
+namespace GoldcarrotLaravel\Base\Enums;
 
 
-use Goldcarrot\Base\Interfaces\EnumsInterface;
+use GoldcarrotLaravel\Base\Interfaces\EnumsInterface;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use ReflectionClass;

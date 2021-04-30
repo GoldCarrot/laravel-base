@@ -1,12 +1,12 @@
 <?php
 
-namespace Goldcarrot\Base\Repositories;
+namespace GoldcarrotLaravel\Base\Repositories;
 
 
-use Goldcarrot\Base\Interfaces\RepositoryInterface;
-use Goldcarrot\Exceptions\TypeException;
-use Goldcarrot\Traits\RepositoryAliasKey;
-use Goldcarrot\Traits\RepositoryQueryConditions;
+use GoldcarrotLaravel\Base\Exceptions\TypeException;
+use GoldcarrotLaravel\Base\Interfaces\RepositoryInterface;
+use GoldcarrotLaravel\Base\Traits\RepositoryAliasKey;
+use GoldcarrotLaravel\Base\Traits\RepositoryQueryConditions;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

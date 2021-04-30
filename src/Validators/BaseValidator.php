@@ -1,13 +1,13 @@
 <?php
 /**
  * Created date 29.07.2020
- * @author Sergey Tyrgola <ts@Goldcarrot\Base.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel\Base.ru>
  */
 
-namespace Goldcarrot\Base\Validators;
+namespace GoldcarrotLaravel\Base\Validators;
 
 
-use Goldcarrot\Base\Interfaces\ValidatorInterface;
+use GoldcarrotLaravel\Base\Interfaces\ValidatorInterface;
 use Illuminate\Support\Facades\Validator;
 
 abstract class BaseValidator implements ValidatorInterface

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Goldcarrot;
+namespace GoldcarrotLaravel\Base;
 
-use Goldcarrot\Console\DomainMakeCommand;
-use Goldcarrot\Console\EnumsMakeCommand;
-use Goldcarrot\Console\PresenterMakeCommand;
-use Goldcarrot\Console\RepositoryMakeCommand;
-use Goldcarrot\Console\ServiceMakeCommand;
-use Goldcarrot\Console\ValidatorMakeCommand;
+use GoldcarrotLaravel\Base\Console\DomainMakeCommand;
+use GoldcarrotLaravel\Base\Console\EnumsMakeCommand;
+use GoldcarrotLaravel\Base\Console\PresenterMakeCommand;
+use GoldcarrotLaravel\Base\Console\RepositoryMakeCommand;
+use GoldcarrotLaravel\Base\Console\ServiceMakeCommand;
+use GoldcarrotLaravel\Base\Console\ValidatorMakeCommand;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider

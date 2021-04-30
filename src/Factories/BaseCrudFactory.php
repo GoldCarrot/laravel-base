@@ -1,17 +1,17 @@
 <?php
 /**
  * Created date 09.02.2021
- * @author Sergey Tyrgola <ts@Goldcarrot\Base.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel\Base.ru>
  */
 
-namespace Goldcarrot\Base\Factories;
+namespace GoldcarrotLaravel\Base\Factories;
 
 
-use Goldcarrot\Base\Interfaces\CrudFactoryInterface;
-use Goldcarrot\Base\Interfaces\CrudServiceInterface;
-use Goldcarrot\Base\Interfaces\PresenterInterface;
-use Goldcarrot\Base\Interfaces\RepositoryInterface;
-use Goldcarrot\Base\Interfaces\ValidatorInterface;
+use GoldcarrotLaravel\Base\Interfaces\CrudFactoryInterface;
+use GoldcarrotLaravel\Base\Interfaces\CrudServiceInterface;
+use GoldcarrotLaravel\Base\Interfaces\PresenterInterface;
+use GoldcarrotLaravel\Base\Interfaces\RepositoryInterface;
+use GoldcarrotLaravel\Base\Interfaces\ValidatorInterface;
 use InvalidArgumentException;
 
 abstract class BaseCrudFactory implements CrudFactoryInterface

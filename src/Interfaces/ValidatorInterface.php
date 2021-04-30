@@ -1,6 +1,6 @@
 <?php
 
-namespace Goldcarrot\Base\Interfaces;
+namespace GoldcarrotLaravel\Base\Interfaces;
 
 
 interface ValidatorInterface

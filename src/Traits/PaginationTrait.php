@@ -1,10 +1,10 @@
 <?php
 /**
  * Created date 26.03.2021
- * @author Sergey Tyrgola <ts@goldcarrot.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel.ru>
  */
 
-namespace Goldcarrot\Base\Traits;
+namespace GoldcarrotLaravel\Base\Traits;
 
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;

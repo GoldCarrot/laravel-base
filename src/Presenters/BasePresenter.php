@@ -1,12 +1,12 @@
 <?php
 /**
  * Created date 18.01.2021
- * @author Sergey Tyrgola <ts@Goldcarrot\Base.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel\Base.ru>
  */
 
-namespace Goldcarrot\Base\Presenters;
+namespace GoldcarrotLaravel\Base\Presenters;
 
-use Goldcarrot\Base\Interfaces\PresenterInterface;
+use GoldcarrotLaravel\Base\Interfaces\PresenterInterface;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
 

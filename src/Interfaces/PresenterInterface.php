@@ -1,10 +1,10 @@
 <?php
 /**
  * Created date 17.07.2020
- * @author Sergey Tyrgola <ts@Goldcarrot\Base.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel\Base.ru>
  */
 
-namespace Goldcarrot\Base\Interfaces;
+namespace GoldcarrotLaravel\Base\Interfaces;
 
 
 interface PresenterInterface

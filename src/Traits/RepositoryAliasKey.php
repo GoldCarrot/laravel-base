@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Goldcarrot\Traits;
+namespace GoldcarrotLaravel\Base\Traits;
 
 
 use Illuminate\Database\Eloquent\Builder;

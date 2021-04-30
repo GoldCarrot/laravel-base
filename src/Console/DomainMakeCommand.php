@@ -1,6 +1,6 @@
 <?php
 
-namespace Goldcarrot\Console;
+namespace GoldcarrotLaravel\Base\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

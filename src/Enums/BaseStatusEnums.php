@@ -1,14 +1,14 @@
 <?php
 /**
  * Created date 04.08.2020
- * @author Sergey Tyrgola <ts@Goldcarrot\Base.ru>
+ * @author Sergey Tyrgola <ts@GoldcarrotLaravel\Base.ru>
  */
 
-namespace Goldcarrot\Base\Enums;
+namespace GoldcarrotLaravel\Base\Enums;
 
 /**
  * Class BaseStatusEnums
- * @package Goldcarrot\Base\Enums
+ * @package GoldcarrotLaravel\Base\Enums
  *
  * @method static bool isActive($status)
  * @method static bool isInactive($status)

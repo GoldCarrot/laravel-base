@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Goldcarrot\Exceptions;
+namespace GoldcarrotLaravel\Base\Exceptions;
 
 
 use Exception as BaseException;
