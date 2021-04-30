@@ -4,13 +4,15 @@
 namespace Goldcarrot\Traits;
 
 
-use Goldcarrot\Base\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 trait RepositoryQueryConditions
 {
     protected array $searchableColumns = ['id'];
+
+    private string $defaultCondition = 'Is';
 
     private array $conditions = [
         'Is',
@@ -69,19 +71,19 @@ trait RepositoryQueryConditions
     {
         $conditionsPattern = collect($conditions)->join('|');
 
-        $searchableColumnsCollection = collect($this->searchableColumns);
+        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::camel($column));
         $andColumns = $searchableColumnsCollection->join('|');
-        $orColumns = $searchableColumnsCollection->map(fn($column) => '(or)(' . Str::ucfirst($column) . ')')->join('|');
+        $orColumns = $searchableColumnsCollection->map(fn($column) => Str::ucfirst($column))->join('|');
 
-        $andPattern = "/^($andColumns)($conditionsPattern)$/";
-        $orPattern = "/^($orColumns)($conditionsPattern)$/";
+        $andPattern = "/^($andColumns)($conditionsPattern)?$/";
+        $orPattern = "/^or($orColumns)($conditionsPattern)?$/";
 
         if (preg_match($andPattern, $string, $parameters)) {
-            return [Str::lfirst($parameters[1]), $parameters[2], 'and'];
+            return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'and'];
         }
 
         if (preg_match($orPattern, $string, $parameters)) {
-            return [Str::lfirst($parameters[3]), $parameters[4], 'or'];
+            return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'or'];
         }
 
         return null;
@@ -89,7 +91,7 @@ trait RepositoryQueryConditions
 
     private function addStatelessCondition(Builder $query, $column, $condition, $boolean = 'and'): bool
     {
-        if (Arr::has($this->statelessConditions, $condition)) {
+        if (in_array($condition, $this->statelessConditions, true)) {
             switch ($condition) {
                 case 'IsNull' :
                     $query->whereNull($column, $boolean);
@@ -106,7 +108,7 @@ trait RepositoryQueryConditions
 
     private function addCondition(Builder $query, $column, $condition, $value, $boolean = 'and'): bool
     {
-        if ($operator = Arr::get($this->conditions, $condition)) {
+        if ($operator = Arr::get($this->operators, $condition)) {
             $query->where($column, $operator, $value, $boolean);
 
             return true;

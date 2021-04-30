@@ -1,6 +1,13 @@
 {
   "name": "goldcarrot/laravel-base",
   "description": "Laravel base help classes",
+  "authors": [
+    {
+      "name": "Tyrgola Sergey",
+      "email": "ts@goldcarrot.ru",
+      "role": "Developer"
+    }
+  ],
   "license": "MIT",
   "require": {
     "php": "^8.0",
@@ -8,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Goldcarrot\\": "src/"
+      "GoldcarrotLaravel\\Base\\": "src/"
     }
   }
 }

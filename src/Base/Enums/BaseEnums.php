@@ -4,7 +4,7 @@ namespace Goldcarrot\Base\Enums;
 
 
 use Goldcarrot\Base\Interfaces\EnumsInterface;
-use Goldcarrot\Base\Str;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use ReflectionClass;
 
@@ -12,17 +12,12 @@ use ReflectionClass;
 abstract class BaseEnums implements EnumsInterface
 {
 
-    abstract public static function keys(): array;
-
-    public static function labels(): array
-    {
-        return array_combine(static::keys(), static::keys());
-    }
-
     public static function contains($key): bool
     {
         return in_array($key, static::keys(), true);
     }
+
+    abstract public static function keys(): array;
 
     public static function label($key): mixed
     {
@@ -35,16 +30,21 @@ abstract class BaseEnums implements EnumsInterface
         throw new InvalidArgumentException("Unknown enum: $key");
     }
 
-    public function __call(string $method, array $parameters)
+    public static function labels(): array
     {
-        if ($compareCallArguments = $this->getCompareCallArguments($method, $parameters)) {
-            return $this->compare(...$compareCallArguments);
-        }
+        return array_combine(static::keys(), static::keys());
     }
 
     public static function __callStatic(string $method, array $parameters)
     {
         return (new static)->$method(...$parameters);
+    }
+
+    public function __call(string $method, array $parameters)
+    {
+        if ($compareCallArguments = $this->getCompareCallArguments($method, $parameters)) {
+            return $this->compare(...$compareCallArguments);
+        }
     }
 
     private function getCompareCallArguments($method, $parameters): ?array

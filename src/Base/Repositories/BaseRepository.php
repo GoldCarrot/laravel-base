@@ -34,7 +34,7 @@ abstract class BaseRepository implements RepositoryInterface
             : throw new TypeException('Method modelClass() of ' . static::class . ' must return ' . Model::class . ' instance');
     }
 
-    abstract function modelClass(): string;
+    abstract protected function modelClass(): string;
 
     public function one($id): Model|Builder|null
     {
@@ -83,9 +83,12 @@ abstract class BaseRepository implements RepositoryInterface
 
     protected function withParams(Builder $query, array $params = []): Builder
     {
-        foreach ($params as $param => $value) {
-            $this->withCondition($query, is_int($param) ? $param : [$param => $value]);
-        }
+        $query->where(function (Builder $query) use ($params) {
+            foreach ($params as $param => $value) {
+                $this->withCondition($query, is_int($param) ? $value : [$param => $value]);
+            }
+        });
+
         return $query;
     }
 
