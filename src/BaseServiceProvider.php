@@ -9,9 +9,9 @@ use GoldcarrotLaravel\Base\Console\PresenterMakeCommand;
 use GoldcarrotLaravel\Base\Console\RepositoryMakeCommand;
 use GoldcarrotLaravel\Base\Console\ServiceMakeCommand;
 use GoldcarrotLaravel\Base\Console\ValidatorMakeCommand;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class ServiceProvider extends BaseServiceProvider
+class BaseServiceProvider extends ServiceProvider
 {
     public function register()
     {
