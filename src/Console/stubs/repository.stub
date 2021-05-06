@@ -7,5 +7,12 @@ use GoldcarrotLaravel\Base\Repositories\BaseRepository;
 
 class {{ class }} extends BaseRepository
 {
-    protected string $class = {{ model }}::class;
+    protected array $searchableColumns = [
+      'id',
+    ];
+
+    protected function modelClass(): string
+    {
+        return {{model}}::class;
+    }
 }
