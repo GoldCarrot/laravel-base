@@ -5,7 +5,6 @@ namespace GoldcarrotLaravel\Base\Repositories;
 
 use GoldcarrotLaravel\Base\Exceptions\TypeException;
 use GoldcarrotLaravel\Base\Interfaces\RepositoryInterface;
-use GoldcarrotLaravel\Base\Traits\RepositoryAliasKey;
 use GoldcarrotLaravel\Base\Traits\RepositoryQueryConditions;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,7 +14,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class BaseRepository implements RepositoryInterface
 {
-    use RepositoryQueryConditions, RepositoryAliasKey;
+    use RepositoryQueryConditions;
 
     protected string $keyName = 'id';
     protected int $defaultLimit = 20;
