@@ -67,16 +67,36 @@ trait RepositoryQueryConditions
         return $query;
     }
 
-    protected function recognize(array $conditions, $string): ?array
+    private function recognizeCamel(array $conditions, $string): ?array
     {
-        $conditionsPattern = collect($conditions)->join('|');
+        $conditionsPattern = collect($conditions)->map(fn($column) => Str::snake($column))->join('|');
 
-        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::camel($column));
-        $andColumns = $searchableColumnsCollection->join('|');
-        $orColumns = $searchableColumnsCollection->map(fn($column) => Str::ucfirst($column))->join('|');
+        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::snake($column));
+        $columns = $searchableColumnsCollection->join('|');
 
-        $andPattern = "/^($andColumns)($conditionsPattern)?$/";
-        $orPattern = "/^or($orColumns)($conditionsPattern)?$/";
+        $andPattern = "/^($columns)(_($conditionsPattern))?$/";
+        $orPattern = "/^or_($columns)(_($conditionsPattern))?$/";
+
+        if (preg_match($andPattern, $string, $parameters)) {
+            return [Str::snake($parameters[1]), Str::ucfirst(Str::camel($parameters[3] ?? $this->defaultCondition)), 'and'];
+        }
+
+        if (preg_match($orPattern, $string, $parameters)) {
+            return [Str::snake($parameters[1]), Str::ucfirst(Str::camel($parameters[3] ?? $this->defaultCondition)), 'or'];
+        }
+
+        return null;
+    }
+
+    private function recognizeSnake(array $conditions, $string): ?array
+    {
+        $conditionsPattern = collect($conditions)->map(fn($column) => Str::snake($column))->join('|');
+
+        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::snake($column));
+        $columns = $searchableColumnsCollection->join('|');
+
+        $andPattern = "/^($columns)($conditionsPattern)?$/";
+        $orPattern = "/^or_($columns)($conditionsPattern)?$/";
 
         if (preg_match($andPattern, $string, $parameters)) {
             return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'and'];
@@ -87,6 +107,11 @@ trait RepositoryQueryConditions
         }
 
         return null;
+    }
+
+    protected function recognize(array $conditions, $string): ?array
+    {
+        return $this->recognizeCamel($conditions, $string) ?: $this->recognizeSnake($conditions, $string);
     }
 
     private function addStatelessCondition(Builder $query, $column, $condition, $boolean = 'and'): bool
