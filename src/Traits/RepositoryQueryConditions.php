@@ -69,20 +69,21 @@ trait RepositoryQueryConditions
 
     private function recognizeCamel(array $conditions, $string): ?array
     {
-        $conditionsPattern = collect($conditions)->map(fn($column) => Str::snake($column))->join('|');
+        $conditionsPattern = collect($conditions)->join('|');
 
-        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::snake($column));
-        $columns = $searchableColumnsCollection->join('|');
+        $searchableColumnsCollection = collect($this->searchableColumns)->map(fn($column) => Str::camel($column));
+        $andColumns = $searchableColumnsCollection->join('|');
+        $orColumns = $searchableColumnsCollection->map(fn($column) => Str::ucfirst($column))->join('|');
 
-        $andPattern = "/^($columns)(_($conditionsPattern))?$/";
-        $orPattern = "/^or_($columns)(_($conditionsPattern))?$/";
+        $andPattern = "/^($andColumns)($conditionsPattern)?$/";
+        $orPattern = "/^or($orColumns)($conditionsPattern)?$/";
 
         if (preg_match($andPattern, $string, $parameters)) {
-            return [Str::snake($parameters[1]), Str::ucfirst(Str::camel($parameters[3] ?? $this->defaultCondition)), 'and'];
+            return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'and'];
         }
 
         if (preg_match($orPattern, $string, $parameters)) {
-            return [Str::snake($parameters[1]), Str::ucfirst(Str::camel($parameters[3] ?? $this->defaultCondition)), 'or'];
+            return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'or'];
         }
 
         return null;
