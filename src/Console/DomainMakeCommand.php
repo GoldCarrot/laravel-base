@@ -153,7 +153,7 @@ class DomainMakeCommand extends Command
             '--status' => true,
         ]);
 
-        return $this->call('make:enums', $arguments);
+        return $this->call('make:enum', $arguments);
     }
 
     protected function getPresenterClass($namespace): array|string
