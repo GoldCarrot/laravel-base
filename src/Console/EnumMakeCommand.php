@@ -19,14 +19,14 @@ class EnumMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new enums class';
+    protected $description = 'Create a new enum class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Enums';
+    protected $type = 'Enum';
 
     /**
      * Get the stub file for the generator.
@@ -61,7 +61,7 @@ class EnumMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['status', 's', InputOption::VALUE_NONE, 'Create status enums.'],
+            ['status', 's', InputOption::VALUE_NONE, 'Create status enum.'],
             ['force', 'f', InputOption::VALUE_NONE, 'Create the class even if the presenter already exists'],
         ];
     }

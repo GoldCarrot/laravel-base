@@ -3,13 +3,13 @@
 namespace GoldcarrotLaravel\Base\Enums;
 
 
-use GoldcarrotLaravel\Base\Interfaces\EnumsInterface;
+use GoldcarrotLaravel\Base\Interfaces\EnumInterface;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use ReflectionClass;
 
 
-abstract class BaseEnum implements EnumsInterface
+abstract class BaseEnum implements EnumInterface
 {
 
     public static function contains($key): bool

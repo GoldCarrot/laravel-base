@@ -7,7 +7,7 @@
 namespace GoldcarrotLaravel\Base\Interfaces;
 
 
-interface EnumsInterface
+interface EnumInterface
 {
     public static function keys(): array;
 

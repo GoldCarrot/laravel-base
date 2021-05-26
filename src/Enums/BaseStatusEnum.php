@@ -7,7 +7,7 @@
 namespace GoldcarrotLaravel\Base\Enums;
 
 /**
- * Class BaseStatusEnums
+ * Class BaseStatusEnum
  * @package GoldcarrotLaravel\Base\Enums
  *
  * @method static bool isActive($status)

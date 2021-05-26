@@ -111,7 +111,7 @@ class DomainMakeCommand extends Command
         }
 
         $this->createModel($namespace);
-        $this->createEnums($namespace);
+        $this->createEnum($namespace);
         $this->createRepository($namespace);
         $this->createPresenter($namespace);
         $this->createValidator($namespace);
@@ -138,17 +138,17 @@ class DomainMakeCommand extends Command
         return $this->call('make:model', $arguments);
     }
 
-    protected function getEnumsClass($namespace): array|string
+    protected function getEnumClass($namespace): array|string
     {
-        $defaultClass = "$namespace\\Enums\\{$this->parseDomainName($namespace)}StatusEnums";
+        $defaultClass = "$namespace\\Enums\\{$this->parseDomainName($namespace)}StatusEnum";
 
-        return $this->argument('enums') ?: $defaultClass;
+        return $this->argument('enum') ?: $defaultClass;
     }
 
-    protected function createEnums($namespace): int
+    protected function createEnum($namespace): int
     {
         $arguments = array_filter([
-            'name' => $this->getEnumsClass($namespace),
+            'name' => $this->getEnumClass($namespace),
             '--force' => $this->option('force'),
             '--status' => true,
         ]);
@@ -287,7 +287,7 @@ class DomainMakeCommand extends Command
         return [
             ['name', InputArgument::REQUIRED, 'The name of domain entity'],
             ['model', InputArgument::OPTIONAL, 'The name of model class'],
-            ['enums', InputArgument::OPTIONAL, 'The name of enums class'],
+            ['enum', InputArgument::OPTIONAL, 'The name of enum class'],
             ['presenter', InputArgument::OPTIONAL, 'The name of presenter class'],
             ['repository', InputArgument::OPTIONAL, 'The name of repository class'],
             ['validator', InputArgument::OPTIONAL, 'The name of validator class'],
