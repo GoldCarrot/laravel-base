@@ -2,9 +2,9 @@
 
 namespace {{ namespace }};
 
-use GoldcarrotLaravel\Base\Enums\BaseEnums;
+use GoldcarrotLaravel\Base\Enums\BaseEnum;
 
-class {{ class }} extends BaseEnums
+class {{ class }} extends BaseEnum
 {
    public static function keys(): array
    {

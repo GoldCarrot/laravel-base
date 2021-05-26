@@ -15,7 +15,7 @@ namespace GoldcarrotLaravel\Base\Enums;
  * @method static bool isBanned($status)
  * @method static bool isDeleted($status)
  */
-class BaseStatusEnums extends BaseEnums
+class BaseStatusEnum extends BaseEnum
 {
     public const ACTIVE = 'active';
     public const INACTIVE = 'inactive';

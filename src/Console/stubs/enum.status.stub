@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use GoldcarrotLaravel\Base\Enums\BaseStatusEnum;
+
+class {{ class }} extends BaseStatusEnum
+{
+
+}

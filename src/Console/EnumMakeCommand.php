@@ -5,14 +5,14 @@ namespace GoldcarrotLaravel\Base\Console;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-class EnumsMakeCommand extends GeneratorCommand
+class EnumMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:enums';
+    protected $name = 'make:enum';
 
     /**
      * The console command description.
@@ -36,8 +36,8 @@ class EnumsMakeCommand extends GeneratorCommand
     protected function getStub(): string
     {
         return $this->option('status')
-            ? $this->resolveStubPath('/stubs/enums.status.stub')
-            : $this->resolveStubPath('/stubs/enums.stub');
+            ? $this->resolveStubPath('/stubs/enum.status.stub')
+            : $this->resolveStubPath('/stubs/enum.stub');
     }
 
     /**

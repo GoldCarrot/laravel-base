@@ -14,27 +14,27 @@ class {{ class }}
 
     public function update({{ model }} ${{ modelVariable }}, array $data): ?{{ model }}
     {
-        // TODO {{ model }} create method
+        // TODO {{ model }} update method
     }
 
     public function activate({{ model }} ${{ modelVariable }}): bool
     {
-        // TODO {{ model }} create method
+        // TODO {{ model }} activate method
     }
 
     public function archive({{ model }} ${{ modelVariable }}): bool
     {
-        // TODO {{ model }} create method
+        // TODO {{ model }} archive method
     }
 
     public function ban({{ model }} ${{ modelVariable }}): bool
     {
-        // TODO {{ model }} create method
+        // TODO {{ model }} ban method
     }
 
     public function destroy({{ model }} ${{ modelVariable }}): bool
     {
-        // TODO {{ model }} create method
+        // TODO {{ model }} destroy method
     }
 }
 

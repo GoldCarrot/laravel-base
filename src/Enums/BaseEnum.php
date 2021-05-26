@@ -9,7 +9,7 @@ use InvalidArgumentException;
 use ReflectionClass;
 
 
-abstract class BaseEnums implements EnumsInterface
+abstract class BaseEnum implements EnumsInterface
 {
 
     public static function contains($key): bool

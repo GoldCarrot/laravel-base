@@ -4,7 +4,7 @@
 namespace GoldcarrotLaravel\Base;
 
 use GoldcarrotLaravel\Base\Console\DomainMakeCommand;
-use GoldcarrotLaravel\Base\Console\EnumsMakeCommand;
+use GoldcarrotLaravel\Base\Console\EnumMakeCommand;
 use GoldcarrotLaravel\Base\Console\PresenterMakeCommand;
 use GoldcarrotLaravel\Base\Console\RepositoryMakeCommand;
 use GoldcarrotLaravel\Base\Console\ServiceMakeCommand;
@@ -17,7 +17,7 @@ class BaseServiceProvider extends ServiceProvider
     {
         $this->commands([
             DomainMakeCommand::class,
-            EnumsMakeCommand::class,
+            EnumMakeCommand::class,
             PresenterMakeCommand::class,
             RepositoryMakeCommand::class,
             ServiceMakeCommand::class,
