@@ -8,7 +8,7 @@ use GoldcarrotLaravel\Base\Repositories\BaseRepository;
 class {{ class }} extends BaseRepository
 {
     protected array $searchableColumns = [
-      'id',
+        'id',
     ];
 
     protected function modelClass(): string
