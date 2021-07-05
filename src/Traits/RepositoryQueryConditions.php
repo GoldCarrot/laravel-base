@@ -4,6 +4,7 @@
 namespace GoldcarrotLaravel\Base\Traits;
 
 
+use GoldcarrotLaravel\Base\Exceptions\InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -107,7 +108,7 @@ trait RepositoryQueryConditions
             return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'or'];
         }
 
-        return null;
+        throw new InvalidArgumentException("Invalid condition: $string");
     }
 
     protected function recognize(array $conditions, $string): ?array
