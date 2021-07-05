@@ -108,12 +108,14 @@ trait RepositoryQueryConditions
             return [Str::snake($parameters[1]), $parameters[2] ?? $this->defaultCondition, 'or'];
         }
 
-        throw new InvalidArgumentException("Invalid condition: $string");
+        return null;
     }
 
-    protected function recognize(array $conditions, $string): ?array
+    protected function recognize(array $conditions, $string): array
     {
-        return $this->recognizeCamel($conditions, $string) ?: $this->recognizeSnake($conditions, $string);
+        return $this->recognizeCamel($conditions, $string)
+            ?? $this->recognizeSnake($conditions, $string)
+            ?? throw new InvalidArgumentException("Invalid condition: $string");
     }
 
     private function addStatelessCondition(Builder $query, $column, $condition, $boolean = 'and'): bool
