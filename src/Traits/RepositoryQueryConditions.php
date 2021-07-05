@@ -47,8 +47,10 @@ trait RepositoryQueryConditions
 
     protected function withCondition(Builder $query, mixed $parameter): Builder
     {
+        $conditionWasAdded = true;
+
         if (is_string($parameter) && $data = $this->recognize($this->statelessConditions, $parameter)) {
-            $this->addStatelessCondition($query, ...$data);
+            $conditionWasAdded &= $this->addStatelessCondition($query, ...$data);
         }
         if (is_array($parameter)) {
             $condition = array_key_first($parameter);
@@ -56,16 +58,16 @@ trait RepositoryQueryConditions
 
             if (!is_array($value) && $data = $this->recognize($this->conditions, $condition)) {
                 [$column, $condition, $boolean] = $data;
-                $this->addCondition($query, $column, $condition, $value, $boolean);
+                $conditionWasAdded &= $this->addCondition($query, $column, $condition, $value, $boolean);
             }
 
             if (is_array($value) && $data = $this->recognize($this->hardConditions, $condition)) {
                 [$column, $condition, $boolean] = $data;
-                $this->addHardCondition($query, $column, $condition, $value, $boolean);
+                $conditionWasAdded &= $this->addHardCondition($query, $column, $condition, $value, $boolean);
             }
         }
 
-        return $query;
+        return $conditionWasAdded ? $query : throw new InvalidArgumentException('Invalid condition parameter: ' . json_encode($parameter));
     }
 
     private function recognizeCamel(array $conditions, $string): ?array
@@ -113,9 +115,7 @@ trait RepositoryQueryConditions
 
     protected function recognize(array $conditions, $string): array
     {
-        return $this->recognizeCamel($conditions, $string)
-            ?? $this->recognizeSnake($conditions, $string)
-            ?? throw new InvalidArgumentException("Invalid condition: $string");
+        return $this->recognizeCamel($conditions, $string) ?? $this->recognizeSnake($conditions, $string);
     }
 
     private function addStatelessCondition(Builder $query, $column, $condition, $boolean = 'and'): bool
