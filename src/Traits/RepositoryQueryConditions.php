@@ -113,7 +113,7 @@ trait RepositoryQueryConditions
         return null;
     }
 
-    protected function recognize(array $conditions, $string): array
+    protected function recognize(array $conditions, $string): ?array
     {
         return $this->recognizeCamel($conditions, $string) ?? $this->recognizeSnake($conditions, $string);
     }
