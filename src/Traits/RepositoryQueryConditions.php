@@ -123,10 +123,10 @@ trait RepositoryQueryConditions
         if (in_array($condition, $this->statelessConditions, true)) {
             switch ($condition) {
                 case 'IsNull' :
-                    $query->whereNull($column, $boolean);
+                    $query->whereNull($this->qualifyColumn($column), $boolean);
                     break;
                 case 'IsNotNull' :
-                    $query->whereNotNull($column, $boolean);
+                    $query->whereNotNull($this->qualifyColumn($column), $boolean);
                     break;
             }
             return true;
@@ -138,7 +138,7 @@ trait RepositoryQueryConditions
     private function addCondition(Builder $query, $column, $condition, $value, $boolean = 'and'): bool
     {
         if ($operator = Arr::get($this->operators, $condition)) {
-            $query->where($column, $operator, $value, $boolean);
+            $query->where($this->qualifyColumn($column), $operator, $value, $boolean);
 
             return true;
         }
@@ -151,10 +151,10 @@ trait RepositoryQueryConditions
         if (Arr::has($this->hardConditions, $condition)) {
             switch ($condition) {
                 case 'Between':
-                    $query->whereBetween($column, $values, $boolean);
+                    $query->whereBetween($this->qualifyColumn($column), $values, $boolean);
                     break;
                 case 'IsNotBetween':
-                    $query->whereNotBetween($column, $values, $boolean);
+                    $query->whereNotBetween($this->qualifyColumn($column), $values, $boolean);
                     break;
             }
             return true;

@@ -42,7 +42,7 @@ abstract class BaseRepository implements RepositoryInterface
 
     private function byKey(Builder $query, $key): Builder
     {
-        return $query->where($this->keyName, $key);
+        return $query->where($this->qualifyColumn($this->keyName), $key);
     }
 
     protected function query(): Builder
