@@ -101,16 +101,16 @@ abstract class BaseRepository implements RepositoryInterface
         return $this->withParams($active ? $this->active() : $this->query(), $params)->first();
     }
 
-    public function paginateActive(array $params = [], int $limit = null): LengthAwarePaginatorInterface|LengthAwarePaginator
+    public function paginateActive(array $params = [], int $limit = null, $pageName = 'page'): LengthAwarePaginatorInterface|LengthAwarePaginator
     {
-        return $this->paginate($params, $limit, true);
+        return $this->paginate($params, $limit, true, $pageName);
     }
 
-    public function paginate(array $params = [], int $limit = null, bool $active = false): LengthAwarePaginatorInterface|LengthAwarePaginator
+    public function paginate(array $params = [], int $limit = null, bool $active = false, $pageName = 'page'): LengthAwarePaginatorInterface|LengthAwarePaginator
     {
         return $this
             ->withParams($active ? $this->active() : $this->query(), $params)
-            ->paginate($limit ?: $this->defaultLimit);
+            ->paginate($limit ?: $this->defaultLimit, ['*'], $pageName);
     }
 
     protected function qualifyColumn($column): string
